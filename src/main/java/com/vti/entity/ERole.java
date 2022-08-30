@@ -1,5 +1,5 @@
 package com.vti.entity;
 
 public enum ERole {
-	ROLE_USER, ROLE_MANAGER, ROLE_ADMIN
+	ROLE_CUSTOMER, ROLE_MANAGER, ROLE_ADMIN
 }

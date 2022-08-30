@@ -3,9 +3,9 @@ package com.vti.payload.request;
 import javax.validation.constraints.NotBlank;
 
 public class LoginRequest {
-	@NotBlank
+	@NotBlank(message = "username can not be empty")
 	 private String username;
-	@NotBlank
+	@NotBlank(message = "password can not be empty")
 	 private String password;
 
 	public String getUsername() {

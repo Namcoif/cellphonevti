@@ -4,15 +4,17 @@ import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class SignupRequest {
 	@NotBlank
 	@Size(min = 3, max = 20)
 	private String username;
-	@NotBlank
-	@Size(max = 50)
-	@Email
+	
+	@Size(max = 50, message = "max size is 50")
+	@Email(message = "Email is not valid")
+	@NotEmpty(message = "Email cannot be empty")
 	private String email;
 	private Set<String> role;
 	@NotBlank

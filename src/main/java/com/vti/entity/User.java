@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -30,9 +31,10 @@ public class User {
 	@Size(max = 20)
 	private String username;
 
-	@NotBlank
+	
 	@Size(max = 50)
-	@Email
+	@Email(message = "Email is not valid")
+	@NotEmpty(message = "Email cannot be empty hihihi")
 	private String email;
 
 	@NotBlank
