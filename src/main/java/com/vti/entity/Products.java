@@ -19,7 +19,7 @@ public class Products {
 	@Column(name = "ProductID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 
 	@NotBlank
 	@Size(max = 50)
@@ -39,7 +39,7 @@ public class Products {
 
 	}
 
-	public Products(Long id, @NotBlank @Size(max = 50) String productName, Float price, Float salePrice, String imgLink,
+	public Products(int id, @NotBlank @Size(max = 50) String productName, Float price, Float salePrice, String imgLink,
 			Categories categories) {
 		this.id = id;
 		this.productName = productName;
@@ -49,11 +49,11 @@ public class Products {
 		this.categories = categories;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
