@@ -28,9 +28,9 @@ public class CustomSpecificationProducts implements Specification<Products>{
 		if (field.equalsIgnoreCase("name")) {
 			return criteriaBuilder.like(root.get("name"), "%" + value.toString() + "%");
 	}
-//			else if(field.equalsIgnoreCase("categories")) {
-//			return criteriaBuilder.equal(root.get("categories"),Categories.)
-//		}
+		else if(field.equalsIgnoreCase("categoriesName")) {
+			return criteriaBuilder.equal(root.get("categoriesName"),null);
+		}
 			
 		return null;
 	}

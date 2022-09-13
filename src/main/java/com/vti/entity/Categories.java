@@ -21,7 +21,7 @@ public class Categories {
 	@Column(name = "CategoryID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 
 	@NotBlank
 	@Size(max = 50)
@@ -35,18 +35,18 @@ public class Categories {
 	public Categories() {
 	}
 
-	public Categories(Long id, @NotBlank @Size(max = 50) String categoryName, String imgLink, List<Products> products) {
+	public Categories(int id, @NotBlank @Size(max = 50) String categoryName, String imgLink, List<Products> products) {
 		this.id = id;
 		this.categoryName = categoryName;
 		this.imgLink = imgLink;
 		this.products = products;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -73,5 +73,5 @@ public class Categories {
 	public void setProducts(List<Products> products) {
 		this.products = products;
 	}
-
+	
 }

@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vti.dto.InforUpDateDTO;
 import com.vti.dto.ProductsDTO;
 import com.vti.entity.Products;
 import com.vti.form.product.ProductsFilterForm;
@@ -44,5 +45,27 @@ public class ProductsService implements IProductsService{
 		Specification<Products> where = ProductsSpecification.buildWhere(search, pdFF);
 		return pdRepository.findAll(where,pageable);
 	}
+
+
+	@Override
+	public void deleteProducts(int id) {
+		pdRepository.deleteById(id);
+	}
+
+
+	@Override
+	public void deleteMultipleProducts(List<Integer> ids) {
+		pdRepository.deleteMultilProducts(ids);
+	}
+
+	@Override
+	public void updateProducts(InforUpDateDTO ifDTO) {
+		Products pd = modelMapper.map(ifDTO, Products.class);
+		pdRepository.save(pd);
+		
+	}
+
+
+	
 
 }

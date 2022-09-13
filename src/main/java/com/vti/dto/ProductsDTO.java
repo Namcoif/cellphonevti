@@ -17,4 +17,5 @@ public class ProductsDTO {
 	private String imgLink;
 	
 	private int categoriesId;
+
 }

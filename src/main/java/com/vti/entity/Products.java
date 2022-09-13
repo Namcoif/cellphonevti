@@ -12,6 +12,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "products", uniqueConstraints = { @UniqueConstraint(columnNames = "productName") })
 public class Products {
@@ -96,5 +98,8 @@ public class Products {
 	public void setCategories(Categories categories) {
 		this.categories = categories;
 	}
-
+	
+//	public void setCategoriesId(int categoiesId) {
+//		this.categories.setId(categoiesId);
+//	}
 }

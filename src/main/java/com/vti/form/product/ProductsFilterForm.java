@@ -6,5 +6,6 @@ import lombok.Data;
 
 @Data
 public class ProductsFilterForm {
-	private Categories categories;
+	
+	private String categoriesName;
 }
