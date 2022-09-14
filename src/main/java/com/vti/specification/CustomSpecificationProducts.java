@@ -26,7 +26,7 @@ public class CustomSpecificationProducts implements Specification<Products>{
 	@Override
 	public Predicate toPredicate(Root<Products> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		if (field.equalsIgnoreCase("name")) {
-			return criteriaBuilder.like(root.get("name"), "%" + value.toString() + "%");
+			return criteriaBuilder.like(root.get("productName"), "%" + value + "%");
 	}
 		else if(field.equalsIgnoreCase("categoriesName")) {
 			return criteriaBuilder.equal(root.get("categoriesName"),null);
