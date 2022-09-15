@@ -2,6 +2,8 @@ package com.vti.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -15,11 +17,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.vti.dto.InforUpDateDTO;
 import com.vti.dto.ProductsDTO;
@@ -89,17 +93,26 @@ public class ProductsController {
 		return ResponseEntity.status(HttpStatus.OK).body(message.toString());
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateProducts(@PathVariable(name = "id") int id,
-			@RequestBody @Validated InforUpDateDTO ifDTO) {
-		System.out.println("id: " + id);
-		System.out.println(ifDTO);
-
-		pdService.updateProducts(ifDTO);
-
-		JSONObject message = new JSONObject();
-		message.put("rusultText", "Products updated successfully");
-		message.put("status", 200);
-		return ResponseEntity.status(HttpStatus.OK).body(message.toString());
+//	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+//	public ResponseEntity<?> updateProducts(@PathVariable(name = "id") int id,
+//			@RequestBody @Validated InforUpDateDTO ifDTO) {
+//		System.out.println("id: " + id);
+//		System.out.println(ifDTO);
+//
+//		pdService.updateProducts(ifDTO);
+//
+//		JSONObject message = new JSONObject();
+//		message.put("rusultText", "Products updated successfully");
+//		message.put("status", 200);
+//		return ResponseEntity.status(HttpStatus.OK).body(message.toString());
+//	}
+	
+	@PutMapping
+	public ResponseEntity<?> updateProducts(@RequestParam(name = "id") int id, @RequestBody @Valid InforUpDateDTO ifDTO) {
+		Products products = modelMapper.map(ifDTO, Products.class);
+		products.setId(id);
+		pdService.updateProducts(products);
+		return ResponseEntity.ok().body("Updated product successfully!");
 	}
+	
 }

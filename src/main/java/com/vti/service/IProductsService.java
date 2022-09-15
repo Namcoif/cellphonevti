@@ -21,5 +21,7 @@ public interface IProductsService {
 	
 	void deleteMultipleProducts(List<Integer> ids);
 	
-	void updateProducts(InforUpDateDTO ifDTO);
+//	void updateProducts(InforUpDateDTO ifDTO);
+
+	void updateProducts(Products products);
 }

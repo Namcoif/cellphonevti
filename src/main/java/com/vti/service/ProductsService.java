@@ -59,9 +59,9 @@ public class ProductsService implements IProductsService{
 	}
 
 	@Override
-	public void updateProducts(InforUpDateDTO ifDTO) {
-		Products pd = modelMapper.map(ifDTO, Products.class);
-		pdRepository.save(pd);
+	public void updateProducts(Products products) {
+		
+		pdRepository.save(products);
 		
 	}
 
