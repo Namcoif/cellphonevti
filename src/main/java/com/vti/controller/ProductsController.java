@@ -32,7 +32,7 @@ import com.vti.form.product.ProductsFilterForm;
 import com.vti.service.ProductsService;
 
 @RestController
-@RequestMapping(value = "/api/manager/products")
+@RequestMapping(value = "/api/products")
 public class ProductsController {
 	@Autowired
 	private ModelMapper modelMapper;
@@ -62,7 +62,7 @@ public class ProductsController {
 		return pageProductsDTO;
 	}
 
-	@PostMapping()
+	@PostMapping("/manager")
 	public ResponseEntity<?> createProducts(@RequestBody ProductsDTO pdDTO) {
 	
 			pdService.creatProducts(pdDTO);
@@ -74,7 +74,7 @@ public class ProductsController {
 	
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/manager/delete/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> deleteProducts(@PathVariable(name = "id") int id) {
 		pdService.deleteProducts(id);
 		JSONObject message = new JSONObject();
@@ -83,7 +83,7 @@ public class ProductsController {
 		return ResponseEntity.status(HttpStatus.OK).body(message.toString());
 	}
 
-	@RequestMapping(value = "/deletemultiple", method = RequestMethod.POST)
+	@RequestMapping(value = "/manager/deletemultiple", method = RequestMethod.POST)
 	public ResponseEntity<?> deleteMultipleProducts(@RequestBody List<Integer> ids) {
 		System.out.println(ids);
 		pdService.deleteMultipleProducts(ids);
@@ -107,7 +107,7 @@ public class ProductsController {
 //		return ResponseEntity.status(HttpStatus.OK).body(message.toString());
 //	}
 	
-	@PutMapping
+	@PutMapping(value = "/manager")
 	public ResponseEntity<?> updateProducts(@RequestParam(name = "id") int id, @RequestBody @Valid InforUpDateDTO ifDTO) {
 		Products products = modelMapper.map(ifDTO, Products.class);
 		products.setId(id);

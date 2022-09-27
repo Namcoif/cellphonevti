@@ -15,7 +15,7 @@ import com.vti.repository.CategoriesRepository;
 import com.vti.service.CategoriesService;
 
 @RestController
-@RequestMapping(value = "/api/manager/categories")
+@RequestMapping(value = "/api/categories")
 public class CategoriesController {
 	
 	@Autowired
